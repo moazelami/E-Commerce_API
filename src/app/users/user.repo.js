@@ -1,5 +1,5 @@
 const pool = require('../../common/db/db');
-const db = require("../../common/db/db");
+
 
 
 const getUserById = async (id)=>{

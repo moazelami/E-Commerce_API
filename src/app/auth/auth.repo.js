@@ -1,12 +1,12 @@
 
-const db =require('../../common/db/db');
+const pool =require('../../common/db/db');
 const findUserByEmail = async (email)=>{
-    const result = await db.query(`SELECT * FROM users WHERE email =$1` , [email]);
+    const result = await pool.query(`SELECT * FROM users WHERE email =$1` , [email]);
     return result.rows[0];
 };
 
 const createUser = async (userName , email , hashedPassword)=>{
-    const createdUser = await db.query(`
+    const createdUser = await pool.query(`
         INSERT INTO users (user_name , email , password_hash)
         VALUES ($1,$2,$3)
         RETURNING id , user_name , email , role` , [userName , email , hashedPassword]
@@ -15,7 +15,7 @@ const createUser = async (userName , email , hashedPassword)=>{
 };
 
 const updatePassword = async (email , hashedPassword)=>{
-    const result = await db.query(
+    const result = await pool.query(
         `
         UPDATE users
         SET password_hash = $1,

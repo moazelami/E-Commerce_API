@@ -62,3 +62,8 @@ CREATE TABLE IF NOT EXISTS order_items (
     unit_price NUMERIC NOT NULL
 );
 
+ALTER TABLE categories
+RENAME COLUMN category_name TO name;
+
+ALTER TABLE categories
+ADD deleted BOOLEAN DEFAULT FALSE;

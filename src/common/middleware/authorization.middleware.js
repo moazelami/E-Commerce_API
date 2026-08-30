@@ -6,6 +6,7 @@ const authorization = (req, res , next) => {
             message: 'Admin access required'
         });
     }
+
     next();
 };
 

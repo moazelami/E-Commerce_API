@@ -67,3 +67,9 @@ RENAME COLUMN category_name TO name;
 
 ALTER TABLE categories
 ADD deleted BOOLEAN DEFAULT FALSE;
+
+    ALTER TABLE products
+        RENAME COLUMN product_name TO name;
+
+    ALTER TABLE products
+        ADD deleted BOOLEAN DEFAULT FALSE;

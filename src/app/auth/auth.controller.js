@@ -22,14 +22,14 @@ const register = async (req , res ,next) => {
 const login = async (req , res ,next) => {
     try{
         const {email , password} = req.body;
-        const user = await authService.login(
+        const token = await authService.login(
             email,
             password,
         );
         res.status(200).json({
             success: true,
             message: 'User login successfully.',
-            user
+            token
         });
     }catch (err){
         next(err);

@@ -2,7 +2,7 @@ const userService = require('./user.service');
 
 const viewProfile = async (req , res , next) => {
     try{
-        const userProfile = await userService.viewProfile(req.params.id);
+        const userProfile = await userService.viewProfile(req.user.id);
         res.status(200).json({
             success: true,
             message: 'Profile retrieved successfully.',
@@ -15,7 +15,7 @@ const viewProfile = async (req , res , next) => {
 
 const updateProfile = async (req , res , next) => {
     try{
-        const userProfile = await userService.updateProfile(req.params.id, req.body);
+        const userProfile = await userService.updateProfile(req.user.id, req.body);
         res.status(200).json({
             success: true,
             message: 'Profile updated successfully.',
@@ -29,7 +29,7 @@ const updateProfile = async (req , res , next) => {
 const deleteAccount = async (req, res, next) => {
     try {
         const deletedUser = await userService.deleteAccount(
-            req.params.id
+            req.user.id
         );
 
         res.status(200).json({

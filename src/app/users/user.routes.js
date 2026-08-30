@@ -3,8 +3,8 @@ const {Router} = require('express');
 const userRouter = Router();
 const userController = require('./user.controller');
 
-userRouter.get('/:id',authenticate,userController.viewProfile);
-userRouter.patch('/:id',authenticate,userController.updateProfile);
-userRouter.delete('/:id',authenticate,userController.deleteAccount);
+userRouter.get('/profile',authenticate,userController.viewProfile);
+userRouter.patch('/profile',authenticate,userController.updateProfile);
+userRouter.delete('/profile',authenticate,userController.deleteAccount);
 
 module.exports = userRouter;
